@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  endpoint: '/prospectos-vida'
+  eendpoint: 'http://localhost:8083/game-store/',
+  VIDEOGAME: 'videogame',
+  COMPANY:  'company',
+  CART: 'cart'
 };
