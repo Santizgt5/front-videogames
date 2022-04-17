@@ -1,0 +1,31 @@
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.sell-input {
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 12px;
+    margin: 12px;
+}
+
+.container > mat-label {
+    font-weight: bold;
+}
+
+span {
+    color: red;
+    margin-bottom: 12px;
+    font-size: 12px;
+}

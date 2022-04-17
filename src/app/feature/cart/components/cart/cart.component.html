@@ -1,0 +1,30 @@
+<div *ngIf="videogames.length !== 0" >
+    <section *ngFor="let videogame of cartData?.videogames" >
+      <mat-card>
+        <mat-card-title>Titulo: {{videogame.videogame }}</mat-card-title>
+        <mat-card-subtitle>Precio: {{ videogame.price }}</mat-card-subtitle>
+        <mat-card-actions align="end">
+          <mat-form-field class="m-3">
+            <mat-label for="name">Cantidad</mat-label>
+            <input matInput type="number" disabled="true" [value]="videogame.quantity">
+        </mat-form-field>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+      <div class="container">
+          <mat-label for="name">Total bruto: {{ totalGross | currency }}</mat-label>
+          <mat-label for="name" >Descuento por lunes: {{ discount | currency }}</mat-label>
+          <mat-label for="name">Total neto: {{ cartData?.total | currency}}</mat-label>
+    
+          <div class="button">
+              <button class="btn btn-primary" (click)="deleteCart()" >Eliminar compra</button>
+              <button class="btn btn-primary" (click)="buyCart()" >Confirmar compra</button>
+          </div>
+    
+      </div>
+  </div>
+  
+  <div *ngIf="videogames.length === 0">
+    <h1 class="mt-4" >No hay elementos en el carrito</h1>
+  </div>
+  

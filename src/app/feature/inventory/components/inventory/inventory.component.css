@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: purple;
+  width: 200px;
+  height: 30px;
+  align-self: center;
+  margin-top: 24px;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.filtros {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+}
+
+

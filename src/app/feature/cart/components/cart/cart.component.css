@@ -1,0 +1,25 @@
+mat-form-field {
+    width: 200px;
+}
+
+button {
+    margin: 12px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 24px;
+    height: 150px;
+    justify-content: space-between;
+}
+
+.button {
+    align-self: flex-end;
+}
+
+mat-card {
+    margin-bottom: 12px;
+}
