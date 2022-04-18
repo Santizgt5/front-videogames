@@ -12,7 +12,7 @@ describe('DetalleJuegoComponent', () => {
   let mockCompanyService: any;
 
   beforeEach(async () => {
-    mockCompanyService = jasmine.createSpyObj<CompanyService>('serviceMockVideogame', ['getAll']);
+    mockCompanyService = jasmine.createSpyObj<CompanyService>('serviceMockCompany', ['getAll']);
     await TestBed.configureTestingModule({
       declarations: [ DetalleJuegoComponent ],
       providers: [ MatDialog, {
