@@ -39,7 +39,6 @@ export class DetalleJuegoComponent implements OnInit {
 
   getCompanyName() {
     if(this.companyService.Companies) {
-      console.log(this.companyService.Companies);
       const company = this.companyService.Companies.find(x => this.data.companyId === x.id);
       return company?company.name: this.data.companyId;
     } else {

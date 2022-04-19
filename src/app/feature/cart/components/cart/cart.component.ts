@@ -64,6 +64,7 @@ export class CartComponent implements OnInit {
         timer: 1500
       })
       this.router.navigate(['/inventory']);
+      this.deleteCart();
     }
 
   }
