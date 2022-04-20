@@ -47,7 +47,7 @@ export class PopupCompanyComponent implements OnInit {
         title: 'La desarrolladora se guardo correctamente',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
       this.dialogRef.close();
     }
   }

@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   public totalNet = 0;
   public quantity = 0;
   public cart: Cart;
-  public cartData: any;
+  public cartData: Cart;
 
   constructor( private purchaseService: LocalstorageService, private cartService: CartService,
               private router: Router) { }
@@ -44,7 +44,7 @@ export class CartComponent implements OnInit {
        total: this.totalGross,
        cantidadTotal: this.quantity,
        videogames: this.videogames
-    }
+    };
     let resp = await this.cartService.getCart(this.cart);
     if(resp) {
       this.cartData = resp;
@@ -54,7 +54,6 @@ export class CartComponent implements OnInit {
 
   async buyCart() {
     let resp = await this.cartService.buyCart(this.cartData);
-    console.log(resp);
     if(resp) {
       Swal.fire({
         position: 'top-end',
@@ -62,7 +61,7 @@ export class CartComponent implements OnInit {
         title: 'Se compraron correctamente los juegos',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
       this.router.navigate(['/inventory']);
       this.deleteCart();
     }

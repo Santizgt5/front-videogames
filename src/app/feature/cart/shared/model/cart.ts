@@ -1,4 +1,4 @@
-import { VideogamePurchase } from "@core/modelo/videogamePurchase";
+import { VideogamePurchase } from '@core/modelo/videogamePurchase';
 
 
 export interface Cart {

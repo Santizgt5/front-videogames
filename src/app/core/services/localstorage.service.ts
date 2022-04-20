@@ -14,7 +14,7 @@ export class LocalstorageService {
   public add(videogame: VideogamePurchase ) {
     let array = [];
     if(localStorage.getItem('videogamesCart')) {
-      array = JSON.parse( localStorage.getItem('videogamesCart')! );
+      array = JSON.parse( localStorage.getItem('videogamesCart'));
       array.push(videogame);
       localStorage.setItem('videogamesCart', JSON.stringify(array));
     } else {
@@ -34,10 +34,9 @@ export class LocalstorageService {
 
   public getVideogames() {
     if(localStorage.getItem('videogamesCart')) {
-      return JSON.parse(localStorage.getItem('videogamesCart')!);
+      return JSON.parse(localStorage.getItem('videogamesCart'));
     } else {
       return [];
     }
   }
-
 }

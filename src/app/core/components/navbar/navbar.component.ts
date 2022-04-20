@@ -29,7 +29,7 @@ import { LocalstorageService } from '@core/services/localstorage.service';
 })
 export class NavbarComponent implements OnInit {
 
-  public quantity = localStorage.getItem('videogamesCart') ? JSON.parse(localStorage.getItem('videogamesCart')!).length : 0;
+  public quantity = localStorage.getItem('videogamesCart') ? JSON.parse(localStorage.getItem('videogamesCart')).length : 0;
 
   constructor(private purchaseService: LocalstorageService) { }
 

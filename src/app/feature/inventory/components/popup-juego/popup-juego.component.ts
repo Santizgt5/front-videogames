@@ -52,7 +52,7 @@ export class PopupJuegoComponent implements OnInit {
         title: 'El juego se guardo correctamente',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
       this.dialogRef.close();
     }
   }
@@ -62,7 +62,7 @@ export class PopupJuegoComponent implements OnInit {
   }
 
   get companies() {
-    return this.companyService.Companies
+    return this.companyService.Companies;
   }
 
 }

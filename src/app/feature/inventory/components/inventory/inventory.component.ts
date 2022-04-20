@@ -18,7 +18,9 @@ import { DetalleJuegoComponent } from '../detalle-juego/detalle-juego.component'
 export class InventoryComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'stock', 'companyId', 'releaseDate', 'platform', 'price'];
-  public dataSource: MatTableDataSource<Videogame>; 
+  public dataSource: MatTableDataSource<Videogame>;
+  private dos = 2;
+  private decimalRadix = 10;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -33,7 +35,7 @@ export class InventoryComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.cdRef.detectChanges();
       }
-    })
+    });
 
   }
 
@@ -43,16 +45,15 @@ export class InventoryComponent implements OnInit {
 
   getFormatDate(fecha: string) {
     const spliDate = fecha.split('-');
-    const date = new Date(parseInt(spliDate[0]) , parseInt(spliDate[1]), parseInt(spliDate[2]) );
-    const formatDate = (date: any) => {
-    let formatted_date = date.getDate() + "/" + (date.getMonth()) + "/" + date.getFullYear()
-      return formatted_date;
+    const date = new Date(parseInt(spliDate[0], this.decimalRadix) , parseInt(spliDate[1], this.decimalRadix), parseInt(spliDate[this.dos], this.decimalRadix) );
+    const formatDate = (element: Date) => {
+    return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`;
     }
     return formatDate(date);
   }
 
   openDialog() {
-    const dialogConfig = new MatDialogConfig()
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     this.dialog.open(PopupJuegoComponent, dialogConfig);
@@ -60,14 +61,14 @@ export class InventoryComponent implements OnInit {
   }
 
   openDeveloperDialog() {
-    const dialogConfig = new MatDialogConfig()
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     this.dialog.open(PopupCompanyComponent, dialogConfig);
   }
 
   showVideogameDetail( row:any ) {
-    const dialogConfig = new MatDialogConfig()
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;

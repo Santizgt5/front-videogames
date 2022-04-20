@@ -8,33 +8,37 @@ import { Cart } from '../model/cart';
 })
 export class CartService {
 
+  public cartData: Cart;
+  private succses = 200;
+
   constructor(private http: HttpClient) {
 
   }
 
-  public getCart(data: Cart) {
+  public getCart(data: Cart): Promise<Cart> {
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.endpoint}${environment.CART}/calculateDiscount`, data, {observe: 'response'})
                   .subscribe((response: any) => {
-                    if(response.status === 200) {
-                      resolve(response.body);
+                    if(response.status === this.succses ) {
+                      this.cartData = response.body;
+                      resolve(this.cartData);
                     } else {
                       reject(undefined);
                     }
-                  })
+                  });
     }); 
   }
 
-  public buyCart(data: any) {
+  public buyCart(data: Cart) {
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.endpoint}${environment.CART}/buy`, data, {observe: 'response'})
                   .subscribe((response: any) => {
-                    if(response.status === 200) {
+                    if(response.status === this.succses) {
                       resolve(true);
                     } else {
                       reject(false);
                     }
-                  })
+                  });
     }); 
   } 
 

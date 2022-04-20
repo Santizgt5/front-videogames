@@ -1,4 +1,4 @@
-import { Company } from "./company";
+import { Company } from './company';
 
 export interface Videogame {
     id?:             number;

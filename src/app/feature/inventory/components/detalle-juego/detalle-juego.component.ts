@@ -16,6 +16,8 @@ export class DetalleJuegoComponent implements OnInit {
   public cantidad = 1;
   public message = false;
   public purchase: VideogamePurchase;
+  private dos = 2;
+  private decimalRadix = 10;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Videogame,
               public dialogRef: MatDialogRef<DetalleJuegoComponent>,
@@ -29,10 +31,9 @@ export class DetalleJuegoComponent implements OnInit {
 
   getFormatDate() {
     const spliDate = this.data.releaseDate.split('-');
-    const date = new Date(parseInt(spliDate[0]) , parseInt(spliDate[1]), parseInt(spliDate[2]) );
-    const formatDate = (date: any) => {
-    let formatted_date = date.getDate() + "/" + (date.getMonth()) + "/" + date.getFullYear()
-      return formatted_date;
+    const date = new Date(parseInt(spliDate[0], this.decimalRadix) , parseInt(spliDate[1], this.decimalRadix), parseInt(spliDate[this.dos], this.decimalRadix) );
+    const formatDate = (element: Date) => {
+      return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`
     }
     return formatDate(date);
   }
@@ -49,11 +50,11 @@ export class DetalleJuegoComponent implements OnInit {
   addOrSubtract(operator: boolean ) {
     if(operator) {
       if( this.cantidad < this.data.stock ) {
-        this.cantidad++
+        this.cantidad++;
       }
     } else {
       if(this.cantidad > 0) {
-        this.cantidad--
+        this.cantidad--;
       }
     }
   }
@@ -66,10 +67,10 @@ export class DetalleJuegoComponent implements OnInit {
       this.purchase = {
         id: 1,
         videogame: this.data.title,
-        videogameId: this.data.id!,
+        videogameId: this.data.id,
         quantity: this.cantidad,
-        price: this.data.priceWithDiscountMonth ? this.data.priceWithDiscountMonth : this.data.price 
-      }
+        price: this.data.priceWithDiscountMonth ? this.data.priceWithDiscountMonth : this.data.price
+      };
       this.purchaseService.add(this.purchase);
       Swal.fire({
         position: 'top-end',
@@ -80,24 +81,6 @@ export class DetalleJuegoComponent implements OnInit {
       });
       this.dialogRef.close();
     }
-    // const now = Date.now();
-    // this.history = {
-    //   date: new Date(now),
-    //   quantity: this.cantidad,
-    //   title: this.data.title,
-    //   totalPrice: this.data.price * this.cantidad
-    // }
-    // const resp = await this.historyService.createHistory(this.history);
-    // if(resp) {
-    //   Swal.fire({
-    //     position: 'top-end',
-    //     icon: 'success',
-    //     title: 'La compra se hizo correctamente',
-    //     showConfirmButton: false,
-    //     timer: 1500
-    //   })
-    //   this.dialogRef.close();
-    // }
   }
 
   closeDialog() {
