@@ -46,8 +46,6 @@ export class CompanyService {
           reject(undefined);
         }
     })
-    }).catch( error => {
-      console.log(error);
     });
 }
 
