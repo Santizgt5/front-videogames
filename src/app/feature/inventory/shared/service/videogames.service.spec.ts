@@ -3,6 +3,7 @@ import { HttpTestingController, HttpClientTestingModule, TestRequest } from '@an
 import { VideogamesService } from './videogames.service';
 import { environment } from 'src/environments/environment';
 import { Videogame } from '../model/videogame';
+import { Response } from '../model/response';
 
 describe('VideogamesService', () => {
     let service: VideogamesService;
@@ -43,8 +44,8 @@ describe('VideogamesService', () => {
               "platform": "PS5",
               "price": 150000,
         }
-        const mockResponse = {
-          "valor": 2
+        const mockResponse: Response = {
+          valor: 2
       }
       service.createVideogame(data).then(resp => {
           expect(resp).toEqual(mockResponse);

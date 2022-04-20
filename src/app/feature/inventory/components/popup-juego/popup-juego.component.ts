@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Response } from '@inventory/shared/model/response';
 import { Videogame } from '@inventory/shared/model/videogame';
 import { CompanyService } from '@inventory/shared/service/company.service';
 import { VideogamesService } from '@inventory/shared/service/videogames.service';
@@ -15,7 +16,7 @@ export class PopupJuegoComponent implements OnInit {
 
   public formGroup: FormGroup;
   public videogame: Videogame;
-  public resp: Videogame;
+  public resp: Response;
 
   constructor(public dialogRef: MatDialogRef<PopupJuegoComponent>, 
               private videogameService: VideogamesService,

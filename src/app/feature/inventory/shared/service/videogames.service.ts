@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Videogame } from '../model/videogame';
+import { Response } from '../model/response';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,7 @@ export class VideogamesService {
       });
   }
 
-  public createVideogame(data: Videogame): Promise<Videogame> {
+  public createVideogame(data: Videogame): Promise<Response> {
       const success = 200;
       return new Promise((resolve, reject) => {
         this.http.post(`${environment.endpoint}${environment.VIDEOGAME}`, data, {observe: 'response'}).subscribe((response: any) => {
