@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Company } from '@inventory/shared/model/company';
 import { CompanyService } from '@inventory/shared/service/company.service';
 import Swal from 'sweetalert2';
 
@@ -40,7 +41,7 @@ describe('PopupCompanyComponent', () => {
   });
 
   it('should create company', fakeAsync(() => {
-    const data =  {
+    const data: Company =  {
       "name": "Bungie",
       "description": "Ejemplo de descripción",
       "born": "2022-03-08",
@@ -48,7 +49,7 @@ describe('PopupCompanyComponent', () => {
   }
     const ret = {"valor": 2} 
     component.formGroup.setValue(data);
-    mockCompanyService.createCompany.withArgs(data).and.returnValue(ret);
+    mockCompanyService.createCompany.and.returnValue(ret);
     component.crearDeveloper();
     tick(5000);
     expect(Swal.isVisible()).toBeTruthy();
