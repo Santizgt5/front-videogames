@@ -9,17 +9,17 @@ import { Cart } from '../model/cart';
 export class CartService {
 
   public cartData: Cart;
-  private succses = 200;
 
   constructor(private http: HttpClient) {
 
   }
 
   public getCart(data: Cart): Promise<Cart> {
+    const success = 200;
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.endpoint}${environment.CART}/calculateDiscount`, data, {observe: 'response'})
                   .subscribe((response: any) => {
-                    if(response.status === this.succses ) {
+                    if(response.status === success ) {
                       this.cartData = response.body;
                       resolve(this.cartData);
                     } else {
@@ -30,10 +30,11 @@ export class CartService {
   }
 
   public buyCart(data: Cart) {
+    const success = 200;
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.endpoint}${environment.CART}/buy`, data, {observe: 'response'})
                   .subscribe((response: any) => {
-                    if(response.status === this.succses) {
+                    if(response.status === success) {
                       resolve(true);
                     } else {
                       reject(false);

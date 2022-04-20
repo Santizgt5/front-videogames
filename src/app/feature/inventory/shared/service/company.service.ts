@@ -9,7 +9,7 @@ import { Company } from '../model/company';
 })
 export class CompanyService {
 
-  private companies: Company[];
+  private companiess: Company[];
   public reloaded$: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) {
@@ -22,30 +22,30 @@ export class CompanyService {
       });
    }
 
-   get Companies() {
-     return this.companies;
+   get companies() {
+     return this.companiess;
    }
 
 
   public getAll() {
-    this.http.get( `${environment.endpoint}${environment.COMPANY}`, {observe: "response"}).subscribe( (response: any) => {
-        if(response.status === 200) {
-            this.companies = response.body;
-        } else {
-            console.log(response.body);
+    const success = 200;
+    this.http.get( `${environment.endpoint}${environment.COMPANY}`, {observe: 'response'}).subscribe( (response: any) => {
+        if(response.status === success) {
+            this.companiess = response.body;
         }
-    })
+    });
 }
   public createCompany(data: Company) {
+    const success = 200;
     return new Promise((resolve, reject) => {
-      this.http.post(`${environment.endpoint}${environment.COMPANY}`, data, {observe: "response"} ).subscribe((response: any) => {
-        if(response.status === 200) {
+      this.http.post(`${environment.endpoint}${environment.COMPANY}`, data, {observe: 'response'} ).subscribe((response: any) => {
+        if(response.status === success) {
             this.reloaded$.next(true);
             resolve(response.body);
         }else {
           reject(undefined);
         }
-    })
+    });
     });
 }
 

@@ -16,8 +16,6 @@ export class DetalleJuegoComponent implements OnInit {
   public cantidad = 1;
   public message = false;
   public purchase: VideogamePurchase;
-  private dos = 2;
-  private decimalRadix = 10;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Videogame,
               public dialogRef: MatDialogRef<DetalleJuegoComponent>,
@@ -30,17 +28,19 @@ export class DetalleJuegoComponent implements OnInit {
   }
 
   getFormatDate() {
+    const dos = 2;
+    const decimalRadix = 10;
     const spliDate = this.data.releaseDate.split('-');
-    const date = new Date(parseInt(spliDate[0], this.decimalRadix) , parseInt(spliDate[1], this.decimalRadix), parseInt(spliDate[this.dos], this.decimalRadix) );
+    const date = new Date(parseInt(spliDate[0], decimalRadix) , parseInt(spliDate[1], decimalRadix), parseInt(spliDate[dos], decimalRadix) );
     const formatDate = (element: Date) => {
-      return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`
-    }
+      return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`;
+    };
     return formatDate(date);
   }
 
   getCompanyName() {
-    if(this.companyService.Companies) {
-      const company = this.companyService.Companies.find(x => this.data.companyId === x.id);
+    if(this.companyService.companies) {
+      const company = this.companyService.companies.find(x => this.data.companyId === x.id);
       return company?company.name: this.data.companyId;
     } else {
       return '';

@@ -19,8 +19,6 @@ export class InventoryComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'stock', 'companyId', 'releaseDate', 'platform', 'price'];
   public dataSource: MatTableDataSource<Videogame>;
-  private dos = 2;
-  private decimalRadix = 10;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -44,8 +42,10 @@ export class InventoryComponent implements OnInit {
   }
 
   getFormatDate(fecha: string) {
+    const dos = 2;
+    const decimalRadix = 10;
     const spliDate = fecha.split('-');
-    const date = new Date(parseInt(spliDate[0], this.decimalRadix) , parseInt(spliDate[1], this.decimalRadix), parseInt(spliDate[this.dos], this.decimalRadix) );
+    const date = new Date(parseInt(spliDate[0], decimalRadix) , parseInt(spliDate[1], decimalRadix), parseInt(spliDate[dos], decimalRadix) );
     const formatDate = (element: Date) => {
     return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`;
     }
@@ -67,7 +67,7 @@ export class InventoryComponent implements OnInit {
     this.dialog.open(PopupCompanyComponent, dialogConfig);
   }
 
-  showVideogameDetail( row:any ) {
+  showVideogameDetail( row: Videogame ) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -80,7 +80,7 @@ export class InventoryComponent implements OnInit {
   }
 
   get companies() {
-    return this.companyService.Companies;
+    return this.companyService.companies;
   }
 
 }
