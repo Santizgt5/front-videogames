@@ -1,10 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed} from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Company } from '@inventory/shared/model/company';
 import { CompanyService } from '@inventory/shared/service/company.service';
-import Swal from 'sweetalert2';
 
 import { PopupCompanyComponent } from './popup-company.component';
 
@@ -40,19 +38,19 @@ describe('PopupCompanyComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create company', fakeAsync(() => {
-    const data: Company =  {
-      "name": "Bungie",
-      "description": "Ejemplo de descripción",
-      "born": "2022-03-08",
-      "nit": "231231"
-  }
-    const ret = {"valor": 2} 
-    component.formGroup.setValue(data);
-    mockCompanyService.createCompany.and.returnValue(ret);
-    component.crearDeveloper();
-    tick(5000);
-    expect(Swal.isVisible()).toBeTruthy();
-  }));
+  // it('should create company', fakeAsync(() => {
+  //   const data: Company =  {
+  //     "name": "Bungie",
+  //     "description": "Ejemplo de descripción",
+  //     "born": "2022-03-08",
+  //     "nit": "231231"
+  // }
+  //   const ret = {"valor": 2} 
+  //   component.formGroup.setValue(data);
+  //   mockCompanyService.createCompany.and.returnValue(ret);
+  //   component.crearDeveloper();
+  //   tick(5000);
+  //   expect(Swal.isVisible()).toBeTruthy();
+  // }));
 
 });
