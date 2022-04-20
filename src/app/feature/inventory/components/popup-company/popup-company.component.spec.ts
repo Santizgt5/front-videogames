@@ -1,7 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed} from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyService } from '@inventory/shared/service/company.service';
 
 import { PopupCompanyComponent } from './popup-company.component';
@@ -18,7 +24,7 @@ describe('PopupCompanyComponent', () => {
       declarations: [ PopupCompanyComponent ],
       providers: [ { provide: MatDialogRef, useValue: { close: () => {} }},
      { provide: CompanyService, useValue: mockCompanyService} ],
-     imports: [ ReactiveFormsModule, HttpClientModule ]
+     imports: [ ReactiveFormsModule, HttpClientModule,  MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, BrowserAnimationsModule]
     })
     .compileComponents();
   });
