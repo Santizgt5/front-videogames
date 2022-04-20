@@ -31,6 +31,14 @@ describe('PopupCompanyComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    document.body.removeChild(element);
+  })
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('should create company', fakeAsync(() => {
     const data =  {
       "name": "Bungie",
@@ -46,11 +54,4 @@ describe('PopupCompanyComponent', () => {
     expect(Swal.isVisible()).toBeTruthy();
   }));
 
-  afterEach(() => {
-    document.body.removeChild(element);
-  })
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
