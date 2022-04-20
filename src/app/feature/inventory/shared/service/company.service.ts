@@ -28,11 +28,16 @@ export class CompanyService {
 
 
   public getAll() {
-    const success = 200;
-    this.http.get( `${environment.endpoint}${environment.COMPANY}`, {observe: 'response'}).subscribe( (response: any) => {
-        if(response.status === success) {
-            this.companiess = response.body;
-        }
+    return new Promise((resolve, reject) => {
+      const success = 200;
+      this.http.get( `${environment.endpoint}${environment.COMPANY}`, {observe: 'response'}).subscribe( (response: any) => {
+          if(response.status === success) {
+              this.companiess = response.body;
+              resolve(true);
+          } else {
+              reject(false);
+          }
+      });
     });
 }
   public createCompany(data: Company) {
