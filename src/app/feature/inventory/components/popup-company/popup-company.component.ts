@@ -40,6 +40,7 @@ export class PopupCompanyComponent implements OnInit {
     this.company = this.formGroup.value;
     this.company.born = splitDate[0];
     const resp = await this.companyService.createCompany(this.company);
+    console.log(resp);
     if(resp) {
       Swal.fire({
         position: 'top-end',

@@ -17,9 +17,7 @@ describe('PopupCompanyComponent', () => {
     mockCompanyService = jasmine.createSpyObj<CompanyService>('serviceMockCompany', ['createCompany'],);
     await TestBed.configureTestingModule({
       declarations: [ PopupCompanyComponent ],
-      providers: [ {
-        provide: MatDialogRef, useValue: []     
-     },
+      providers: [ { provide: MatDialogRef, useValue: { close: () => {} }},
      { provide: CompanyService, useValue: mockCompanyService} ],
      imports: [ ReactiveFormsModule, HttpClientModule ]
     })
@@ -43,7 +41,7 @@ describe('PopupCompanyComponent', () => {
     const ret = {"valor": 2} 
     component.formGroup.setValue(data);
     mockCompanyService.createCompany.withArgs(data).and.returnValue(ret);
-    component.crearDeveloper;
+    component.crearDeveloper();
     tick(5000);
     expect(Swal.isVisible()).toBeTruthy();
   }));
