@@ -76,7 +76,7 @@ export class InventoryComponent implements OnInit {
   }
 
   get videogames() {
-    return this.videogameService.Videogames;
+    return this.videogameService.videogames;
   }
 
   get companies() {
