@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CompanyService } from '@inventory/shared/service/company.service';
 import { VideogamesService } from '@inventory/shared/service/videogames.service';
 import Swal from 'sweetalert2';
 
@@ -18,14 +19,17 @@ describe('PopupJuegoComponent', () => {
   let fixture: ComponentFixture<PopupJuegoComponent>;
   let element;
   let mockVideogameService: any;
+  let mockCompanyService: any;
 
   beforeEach(async () => {
     mockVideogameService = jasmine.createSpyObj<VideogamesService>('serviceMockVideogame', ['createVideogame'],);
+    mockCompanyService = jasmine.createSpyObj<CompanyService>('serviceMockCompany', ['getAll']);
     await TestBed.configureTestingModule({
       declarations: [ PopupJuegoComponent ],
       providers: [ 
         { provide: MatDialogRef, useValue: { close: () => {} }},
-        { provide: VideogamesService, useValue: mockVideogameService}],
+        { provide: VideogamesService, useValue: mockVideogameService},
+        { provide: CompanyService, useValue: mockCompanyService}],
      imports: [ ReactiveFormsModule, HttpClientModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, BrowserAnimationsModule ]
     })
     .compileComponents();
