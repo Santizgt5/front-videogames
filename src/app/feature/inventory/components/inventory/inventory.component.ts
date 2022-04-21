@@ -4,7 +4,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopupJuegoComponent } from '../popup-juego/popup-juego.component';
 import { VideogamesService } from '../../shared/service/videogames.service';
-import { CompanyService } from '../../shared/service/company.service';
 import { Videogame } from '../../shared/model/videogame';
 import { PopupCompanyComponent } from '../popup-company/popup-company.component';
 import { DetalleJuegoComponent } from '../detalle-juego/detalle-juego.component';
@@ -24,7 +23,6 @@ export class InventoryComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public developerDialog: MatDialog,
               private videogameService: VideogamesService,
-              private companyService: CompanyService,
               private cdRef: ChangeDetectorRef ) {
 
     this.videogameService.loaded$.subscribe((data) => {
@@ -78,9 +76,4 @@ export class InventoryComponent implements OnInit {
   get videogames() {
     return this.videogameService.videogames;
   }
-
-  get companies() {
-    return this.companyService.companies;
-  }
-
 }
