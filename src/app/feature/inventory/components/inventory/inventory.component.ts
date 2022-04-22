@@ -46,7 +46,7 @@ export class InventoryComponent implements OnInit {
     const date = new Date(parseInt(spliDate[0], decimalRadix) , parseInt(spliDate[1], decimalRadix), parseInt(spliDate[dos], decimalRadix) );
     const formatDate = (element: Date) => {
     return `${element.getDate()}/${(element.getMonth())}/${element.getFullYear()}`;
-    }
+    };
     return formatDate(date);
   }
 
