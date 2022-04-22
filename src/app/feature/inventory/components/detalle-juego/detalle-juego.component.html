@@ -34,11 +34,11 @@
             <mat-label for="name" >Seleccione cantidad a comprar: </mat-label>
             <div>
                 <button class="btn btn-primary" (click)="addOrSubtract(false)" >-</button>
-                <input type="number" placeholder="Cantidad" class="sell-input" [(ngModel)]="cantidad" >
+                <input type="number" id="quantityInput"  placeholder="Cantidad" class="sell-input" [(ngModel)]="cantidad" >
                 <button class="btn btn-primary" (click)="addOrSubtract(true)" >+</button>
             </div>
             <span *ngIf="message">*Ingrese una cantidad en stock</span>
-            <button class="btn btn-dark" (click)="createCart()" >Agregar al carrito</button>
+            <button class="btn btn-dark" id="addCart" (click)="createCart()" >Agregar al carrito</button>
         </div>            
     
     </div>

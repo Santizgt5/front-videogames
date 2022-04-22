@@ -18,7 +18,7 @@
       
           <ng-container matColumnDef="stock">
             <th mat-header-cell *matHeaderCellDef> Stock </th>
-            <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+            <td mat-cell id="tableStock" *matCellDef="let element"> {{element.stock}} </td>
           </ng-container>
       
           <ng-container matColumnDef="companyId">
@@ -53,6 +53,6 @@
                        aria-label="Select page of periodic elements">
         </mat-paginator>
       </div>  
-      <button type="button" (click)="openDialog()">Agregar juego</button>
-      <button type="button" (click)="openDeveloperDialog()">Agregar desarrolladora</button>
+      <button type="button" id="openAddVideogame" (click)="openDialog()">Agregar juego</button>
+      <button type="button" id="openAddCompany" (click)="openDeveloperDialog()">Agregar desarrolladora</button>
 </section>

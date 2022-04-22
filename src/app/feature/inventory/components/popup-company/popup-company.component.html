@@ -7,26 +7,26 @@
     <form [formGroup]="formGroup" >
         <mat-form-field class="container" appearance="fill">
             <mat-label for="name">Nombre</mat-label>
-            <input matInput formControlName="name"  type="text">
+            <input id="idName" matInput formControlName="name"  type="text">
         </mat-form-field>
         <mat-form-field class="container" appearance="fill">
             <mat-label for="description">Descripción</mat-label>
-            <input matInput formControlName="description" type="text">
+            <input id="idDescription" matInput formControlName="description" type="text">
         </mat-form-field>
         <mat-form-field class="container" appearance="fill">
             <mat-label>Fecha de creación</mat-label>
-            <input matInput formControlName="born"  [matDatepicker]="picker">
+            <input matInput id="idBorn" formControlName="born"  [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="container" appearance="fill">
             <mat-label for="nit">NIT</mat-label>
-            <input matInput formControlName="nit" type="text">
+            <input id="idNit" matInput formControlName="nit" type="text">
         </mat-form-field>
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button type="button" class="btn btn-light" (click)="closeDialog()" >Close</button>
-    <button type="button" [disabled]="formGroup.invalid" (click)="crearDeveloper()"  class="btn btn-dark button">Guardar</button>
+    <button type="button" id="createCompany" [disabled]="formGroup.invalid" (click)="crearDeveloper()"  class="btn btn-dark button">Guardar</button>
 </mat-dialog-actions>
